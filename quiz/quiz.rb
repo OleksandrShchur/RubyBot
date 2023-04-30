@@ -4,13 +4,15 @@ module QuizName
   class Quiz
     include Singleton
 
-    attr_accessor :username
+    attr_accessor :yaml_dir, :in_ext, :answers_dir
 
     def initialize
-      @username = ''
+      @yaml_dir = ''
+      @in_ext = ''
+      @answers_dir = ''
     end
 
-    def configure
+    def config(&block)
       yield self
     end
   end
