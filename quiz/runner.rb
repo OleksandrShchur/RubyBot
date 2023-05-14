@@ -25,7 +25,7 @@ module QuizName
       username = @input_reader.get_username
       start_time = Time.now
 
-      engine = Engine.new
+      engine = Engine.new(@bot)
       engine.start
 
       result = engine.result
