@@ -10,22 +10,26 @@ require 'pathname'
 
 module QuizName
   class Engine
-    def initialize
+    def initialize(bot, chat_id, username)
+      @bot = bot
+      @chat_id = chat_id
+      @username = username
+
       @question_collection = []
-      yaml_path = Pathname.new(QuizName::Quiz.instance.yaml_dir)
-      Dir[yaml_path.join("*." + QuizName::Quiz.instance.in_ext)].each do |file|
-        data = QuizName::QuestionData.from_file(file)
-        data.questions.each { |q| @question_collection << QuizName::Question.new(q) }
-      end
-      @input_reader = QuizName::InputReader.new
-      @user_name = @input_reader.read('Enter your name: ')
+
+      @question_data = QuestionData.new
+      @question_data.load_data
+      
       @current_time = Time.now.strftime("%d-%m-%Y %H:%M:%S")
       @writer = QuizName::FileWriter.new('a', QuizName::Quiz.instance.answers_dir, "#{@user_name}_#{@current_time}.txt")
       @statistics = QuizName::Statistics.new(@writer)
     end
 
-    def run
-      puts "Welcome, #{@user_name}!"
+    def start
+      @bot.api.send_message(text: "Welcome, #{@username}!", chat_id: @chat_id)
+
+      puts @question_collection
+
       @question_collection.each_with_index do |question, index|
         puts "\nQuestion #{index + 1}: #{question.text}"
         question.options.each_with_index do |option, option_index|
@@ -37,7 +41,7 @@ module QuizName
         puts "Correct answer: #{question.answer}"
       end
       puts "\nQuiz finished!"
-      @statistics.print_report
+      #@statistics.print_report
     end
 
     def check(user_answer, correct_answer)

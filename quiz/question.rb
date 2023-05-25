@@ -5,10 +5,10 @@ module QuizName
   class Question
     attr_accessor :question_body, :question_correct_answer, :question_answers
     
-    def initialize(raw_text, raw_answers)
-      @question_body = raw_text.strip
-      @question_correct_answer = raw_answers[0].strip
-      @question_answers = load_answers(raw_answers)
+    def initialize(question, answers, correct_answer)
+      @question_body = question.strip
+      @question_correct_answer = correct_answer
+      @question_answers = answers
     end
     
     def display_answers
