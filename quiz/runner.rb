@@ -17,19 +17,23 @@ module QuizName
         case message.text
         when '/start'
           @bot.api.send_message(chat_id: message.chat.id, text: "Hello, #{message.from.first_name}")
+
+          username = message.from.first_name + " " + message.from.last_name
+          start_time = Time.now
+
+          engine = Engine.new(@bot, message.chat.id, username)
+          engine.start
+
         when '/stop'
+          result = engine.result
+          end_time = Time.now
+
+          puts start_time
+          puts end_time
+
           @bot.api.send_message(chat_id: message.chat.id, text: "Bye, #{message.from.first_name}")
         end
       end
-
-      username = @input_reader.get_username
-      start_time = Time.now
-
-      engine = Engine.new(@bot)
-      engine.start
-
-      result = engine.result
-      end_time = Time.now
     end
   end
 end
