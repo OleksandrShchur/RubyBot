@@ -16,11 +16,9 @@ module QuizName
       @username = username
 
       @question_collection = []
-      yaml_path = Pathname.new(QuizName::Quiz.instance.yaml_dir)
-      Dir[yaml_path.join("*." + QuizName::Quiz.instance.in_ext)].each do |file|
-        data = QuizName::QuestionData.from_file(file)
-        data.questions.each { |q| @question_collection << QuizName::Question.new(q) }
-      end
+
+      @question_data = QuestionData.new
+      @question_data.load_data
       
       @current_time = Time.now.strftime("%d-%m-%Y %H:%M:%S")
       @writer = QuizName::FileWriter.new('a', QuizName::Quiz.instance.answers_dir, "#{@user_name}_#{@current_time}.txt")

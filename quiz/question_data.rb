@@ -5,12 +5,11 @@ require_relative 'question'
 class QuestionData
   attr_accessor :collection
 
-  def initialize(yaml_dir, in_ext = "*.yaml")
+  def initialize
     @collection = []
-    @yaml_dir = yaml_dir
-    @in_ext = in_ext
+    @yaml_dir = QuizName::Quiz.instance.yaml_dir
+    @in_ext = QuizName::Quiz.instance.in_ext
     @threads = []
-    load_data
   end
 
   def to_yaml
@@ -55,9 +54,12 @@ class QuestionData
 
   def load_from(filename)
     data = YAML.load_file(filename)
-    data['questions'].shuffle.each do |question_data|
-      question = Question.new(question_data['question'], question_data['answers'], question_data['correct_answer'])
+
+    data.shuffle.each do |question_data|
+      question = QuizName::Question.new(question_data['question'], question_data['answers'], question_data['correct_answer'])
       @collection << question
     end
+
+    puts @collection
   end
 end
