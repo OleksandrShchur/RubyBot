@@ -1,0 +1,6 @@
+en:
+ greeting_message: "Hi! Let's start!"
+ farewell_message: "Bye! See you soon "
+ua:
+ greeting_message: "Привіт! Почнемо роботу!"
+ farewell_message: "Прощавай! До зустрічі"

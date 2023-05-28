@@ -1,0 +1,5 @@
+adapter: sqlite3
+database: db/quiz.db
+encoding: unicode
+pool: 5
+lineout: 5000

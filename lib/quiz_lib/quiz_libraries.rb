@@ -3,6 +3,7 @@ require 'singleton'
 require 'telegram/bot'
 require 'json'
 require 'pathname'
+
 require_relative 'quiz'
 require_relative 'config'
 require_relative 'question'
@@ -11,3 +12,4 @@ require_relative 'file_writer'
 require_relative 'input_reader'
 require_relative 'statistics'
 require_relative 'engine'
+
