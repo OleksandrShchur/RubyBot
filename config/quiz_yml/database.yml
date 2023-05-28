@@ -3,4 +3,4 @@ database: telegrambot_quiz
 encoding: unicode
 pool: 5
 timeout: 5000
-username : #заповнити у своєму варіанті
+username : 

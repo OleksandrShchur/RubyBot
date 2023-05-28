@@ -7,5 +7,3 @@ class CreateUsers < ActiveRecord::Migration[4.2]
     end
    end
    
-  t.integer :uid # id користувача в системі телеграм (message.from.id)
-  t.string :username # імя користувача в системі телеграм (message.from.first_name)

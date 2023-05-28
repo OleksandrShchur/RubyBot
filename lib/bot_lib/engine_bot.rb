@@ -11,7 +11,7 @@ module QuizBot
         end
 
         def QuizBot
-            Telegram::Bot::Client.run(token) { |bot| return bot 
+            Telegram::Bot::Client.run(token) { |bot| return bot }
         end
 
         def bot_listen
