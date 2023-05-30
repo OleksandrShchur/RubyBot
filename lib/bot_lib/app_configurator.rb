@@ -1,11 +1,11 @@
 require 'logger'
 
-require './lib/database_connector'
+#require './lib/database_connector'
 
 class AppConfigurator
   def configure
     setup_i18n
-    setup_database
+    #setup_database
   end
 
   def get_token
@@ -19,9 +19,8 @@ class AppConfigurator
   private
 
   def setup_i18n
-    I18n.load_path = Dir['config/locales.yml']
-    I18n.locale = :en
-    I18n.backend.load_translations
+    I18n.load_path = [File.join(File.dirname(__FILE__), "../", "../", "config", "locales.yml")]
+    I18n.locale = :ua
   end
 
   def setup_database

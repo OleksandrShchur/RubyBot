@@ -1,4 +1,4 @@
-module QuizName
+module QuizDorosh
   class InputReader
     def self.read(welcome_message: nil, validator: nil, error_message: nil, process: nil)
       loop do

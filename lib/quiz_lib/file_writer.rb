@@ -1,4 +1,4 @@
-module QuizName
+module QuizDorosh
   class FileWriter
     def initialize(mode, *args)
       @answers_dir = args[0]

@@ -1,4 +1,4 @@
-module QuizName
+module QuizDorosh
   class Statistics
     attr_reader :correct_answers, :incorrect_answers
   
