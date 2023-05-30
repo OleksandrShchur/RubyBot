@@ -1,4 +1,4 @@
-module QuizName
+module QuizDorosh
   module Config
     extend self
 

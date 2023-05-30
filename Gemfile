@@ -1,10 +1,10 @@
 source 'https://rubygems.org'
 
-#gem 'telegram_bot'
+gem 'telegram_bot'
 gem 'rest-client'
 gem 'telegram-bot-ruby'
 gem 'activerecord'
 gem 'i18n'
-gem 'pg', '~> 0.18.4'
+gem 'pg'
 gem 'sqlite3'
 gem 'rake'

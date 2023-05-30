@@ -1,7 +1,7 @@
 require 'json'
 require 'yaml'
 
-module QuizName
+module QuizDorosh
   class Question
     attr_accessor :question_body, :question_correct_answer, :question_answers
     
